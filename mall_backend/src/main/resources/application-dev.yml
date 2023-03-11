@@ -1,0 +1,32 @@
+server:
+  port: 8088
+
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mall
+    username: euris
+    password:
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 600000
+      pool-name: DateSourceHikariCP
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+  web:
+    resources:
+      add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+mybatis:
+  type-aliases-package: me.euris.mall.model
+  mapper-locations: classpath:dao/*.xml
+
